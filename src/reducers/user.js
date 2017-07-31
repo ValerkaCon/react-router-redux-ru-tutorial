@@ -2,12 +2,12 @@ import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS } from '../con
 
 const initialState = JSON.parse(window.localStorage.getItem('rr_user')) || {}
 
-export default function (state = initialState) {
+export default function (state = initialState, action) {
         switch(action.type) {
             case LOGIN_REQUEST:
                 return {}
             case LOGIN_SUCCESS:
-                return {}
+                return {...state, name: action.payload.name, isAuthenticated: action.payload.isAuthenticated}
             case LOGIN_FAIL:
                 return {}
             case LOGOUT_SUCCESS:
